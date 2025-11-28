@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>💜ℕ𝕀ℝ𝔸ℕ𝕁𝔸ℕ💜ℂℝ𝔼𝔸𝕋𝕀𝕆ℕ𝕊💜</title>
+    <meta charset="UTF-8">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+
+<body style="background-color:#C0C0C0;">
+
+<div id="inputSection"
+     style="border:4px solid white;text-align:center;display:inline-block;position:absolute;width:700px;top:50%;left:50%;transform:translate(-50%,-50%);">
+
+    <h1 style="color:#8A2BE2;">⚔️ 𝕎𝔼𝕃ℂ𝕆𝕄𝔼 𝕋𝕆 ℍ𝔸ℂ𝕀ℕ𝔾 𝕎𝕆ℝ𝕃𝔻 ! ⚔️</h1>
+    <h2 style="color:#0000FF;">🚀 𝕋ℍ𝕀𝕊 𝕀𝕊 𝕆ℕ𝕃𝕐 𝔽𝕆ℝ 𝔼𝔻𝕌ℂ𝔸𝕋𝕀𝕆ℕ𝔸𝕃 ℙ𝕌ℝℙ𝕆𝕊𝔼 🚀</h2>
+    <h2 style="color:tomato;">𝔼ℕ𝕋𝔼ℝ 𝕐𝕆𝕌ℝ ℕ𝔸𝕄𝔼</h2>
+
+    <input type="text" id="u"
+           style="font-size:20px;border:2px solid white;background-color:#C0C0C0;color:#006400">
+    <br><br>
+
+    <button onclick="generate()"
+            style="color:#4169E1;font-size:25px;background-color:#C0C0C0;border:2px solid white;width:290px;">
+       𝕍𝕀𝔼𝕎 ℂ𝔼ℝ𝕋𝕀𝔽𝕀ℂ𝔸𝕋𝔼
+    </button>
+    <br><br>
+</div>
+
+
+<div id="certificateSection" style="display:none; text-align:center;">
+
+    <div id="certificate-container"
+         style="position:relative; width:1200px; height:800px; margin:auto;">
+
+        <img src="https://kni-org.github.io/hacker/k.png"
+             style="width:100%; height:100%;">
+
+        <div id="name-overlay"
+             style="position:absolute; top:480px; left:110px;
+                    color:#222; font-size:20px; font-weight:bold;">
+        </div>
+    </div>
+
+    <br>
+    <button onclick="downloadCert()"
+            style="font-size:25px; border:2px solid white;color:red; background-color:#C0C0C0; padding:10px 20px;">
+       ✨ 𝔻𝕆𝕎ℕ𝕃𝕆𝔸𝔻 ℂ𝔼ℝ𝕋𝕀𝔽𝕀ℂ𝔸𝕋𝔼 ✨
+    </button>
+</div>
+
+
+<script>
+
+function generate() {
+    let name = document.getElementById("u").value.trim();
+    if (name.length === 0) {
+        alert("ℙ𝕃𝔼𝔸𝕊𝔼 𝔼ℕ𝕋𝔼ℝ 𝕐𝕆𝕌ℝ ℕ𝔸𝕄𝔼 !");
+        return;
+    }
+
+    document.getElementById("name-overlay").textContent = name.toUpperCase();
+
+    document.getElementById("inputSection").style.display = "none";
+    document.getElementById("certificateSection").style.display = "block";
+}
+
+async function downloadCert() {
+    const container = document.getElementById("certificate-container");
+
+    const canvas = await html2canvas(container, { scale: 3, useCORS: true });
+    const img = canvas.toDataURL("image/png");
+
+    const { jsPDF } = window.jspdf;
+    const pdf = new jsPDF("landscape", "px", [canvas.width, canvas.height]);
+    pdf.addImage(img, "PNG", 0, 0, canvas.width, canvas.height);
+    pdf.save("🤡ℍ𝔸ℂ𝕂𝔼ℝ🤡.pdf");
+    alert('🚀𝕊𝕌ℂℂ𝔼𝕊𝕊𝔽𝕌𝕃𝕃𝕐 𝔻𝕆𝕎ℕ𝕃𝕆𝔸𝔻𝔼𝔻 ! 🚀 \n👍𝕋ℍ𝔸ℕ𝕂 𝕐𝕆𝕌 𝔽𝕆ℝ 𝕍𝕀𝕊𝕀𝕋𝕀ℕ𝔾 !👍');
+}
+
+</script>
+
+</body>
+</html>
